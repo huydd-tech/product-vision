@@ -1,0 +1,1176 @@
+<!doctype html>
+<html lang="vi" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Channel Management Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    * {
+      font-family: 'Be Vietnam Pro', sans-serif;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    .section {
+      min-height: 100%;
+      scroll-snap-align: start;
+    }
+    .scroll-container {
+      height: 100%;
+      overflow-y: auto;
+      scroll-snap-type: y proximity;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(124, 58, 237, 0.15);
+    }
+    .sticky-nav {
+      backdrop-filter: blur(12px);
+      background: rgba(15, 23, 42, 0.9);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    }
+    .progress-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #7c3aed 0%, #ec4899 50%, #f59e0b 100%);
+      z-index: 100;
+      transition: width 0.1s ease;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    .float-animation {
+      animation: float 6s ease-in-out infinite;
+    }
+    .impact-arrow {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-gradient-to-br from-slate-50 via-purple-50 to-pink-50 text-slate-900">
+  <div class="progress-indicator" id="progressBar"></div><!-- Sticky Navigation -->
+  <nav class="sticky-nav fixed top-0 left-0 right-0 z-50">
+   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+     <div class="w-10 h-10 bg-gradient-to-br from-violet-600 to-pink-600 rounded-lg flex items-center justify-center font-bold text-white">
+      CM
+     </div><span id="navTitle" class="font-bold text-lg text-white">Channel Management Platform</span>
+    </div>
+    <div class="flex items-center gap-6 text-sm"><a href="#problem" class="text-slate-400 hover:text-white transition-colors">Vấn đề</a> <a href="#vision" class="text-slate-400 hover:text-white transition-colors">Tầm nhìn</a> <a href="#goals" class="text-slate-400 hover:text-white transition-colors">Mục tiêu</a> <a href="#features" class="text-slate-400 hover:text-white transition-colors">Chi tiết tính năng</a> <a href="#roadmap" class="text-slate-400 hover:text-white transition-colors">Lộ trình</a>
+    </div>
+   </div>
+  </nav>
+  <div class="scroll-container w-full" id="scrollContainer"><!-- SECTION 1 - Hero -->
+   <section id="home" class="section flex items-center justify-center px-6 py-24 relative overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden">
+     <div class="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-violet-600/20 to-transparent rounded-full blur-3xl"></div>
+     <div class="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-pink-600/20 to-transparent rounded-full blur-3xl"></div>
+     <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl float-animation"></div>
+    </div>
+    <div class="relative z-10 text-center max-w-5xl fade-in">
+     <div class="inline-flex items-center gap-2 px-5 py-2 bg-violet-100 rounded-full border border-violet-300 mb-8"><span class="w-2 h-2 bg-violet-600 rounded-full animate-pulse"></span> <span class="text-sm font-medium text-violet-700">Kick-off dự án Channel Management Platform</span>
+     </div>
+     <h1 id="mainTitle" class="text-6xl md:text-8xl font-black mb-6 leading-tight"><span class="gradient-text">Channel Management Platform</span></h1>
+     <h2 id="mainSubtitle" class="text-2xl md:text-4xl font-bold text-slate-700 mb-12">NỀN TẢNG QUẢN LÝ KÊNH<br>
+      AN TOÀN &amp; CÓ THỂ MỞ RỘNG</h2>
+     <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-12">Từ vận hành thủ công tới Quản trị kênh <span class="text-violet-600 font-semibold">chủ động</span>, <span class="text-pink-600 font-semibold">tập trung</span> &amp; <span class="text-amber-600 font-semibold">dựa trên dữ liệu</span></p>
+     <div class="mt-16 flex justify-center"><a href="#problem" class="flex flex-col items-center gap-2 text-slate-600 hover:text-slate-800 transition-colors"> <span class="text-xs">Cuộn xuống để khám phá</span>
+       <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+       </svg></a>
+     </div>
+    </div>
+   </section><!-- SECTION 2 - Problems -->
+   <section id="problem" class="section flex items-center justify-center px-6 py-24">
+    <div class="max-w-6xl w-full fade-in">
+     <div class="flex items-center gap-3 mb-3"><span class="text-violet-600 font-semibold text-sm tracking-wider uppercase">Bối cảnh</span>
+      <div class="h-px flex-1 bg-gradient-to-r from-violet-300 to-transparent"></div>
+     </div>
+     <h2 class="text-4xl md:text-5xl font-bold mb-12 text-slate-800">Vấn đề <span class="gradient-text">hiện tại</span></h2>
+     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div class="space-y-4">
+       <h3 class="text-2xl font-semibold text-slate-700 mb-6 flex items-center gap-2">
+        <svg class="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+        </svg> Thực trạng vận hành</h3>
+       <div class="space-y-3">
+        <div class="flex items-start gap-3 p-5 bg-white rounded-xl border border-slate-200 card-hover shadow-sm"><span class="text-red-500 text-xl mt-0.5">✗</span> <span class="text-slate-700">Xử lý sự cố kênh chậm do phối hợp thủ công</span>
+        </div>
+        <div class="flex items-start gap-3 p-5 bg-white rounded-xl border border-slate-200 card-hover shadow-sm"><span class="text-red-500 text-xl mt-0.5">✗</span> <span class="text-slate-700">Quy định chạy kênh chưa được kiểm soát hiệu quả</span>
+        </div>
+        <div class="flex items-start gap-3 p-5 bg-white rounded-xl border border-slate-200 card-hover shadow-sm"><span class="text-red-500 text-xl mt-0.5">✗</span> <span class="text-slate-700">Năng suất SEO bị giới hạn khi số kênh tăng</span>
+        </div>
+        <div class="flex items-start gap-3 p-5 bg-white rounded-xl border border-slate-200 card-hover shadow-sm"><span class="text-red-500 text-xl mt-0.5">✗</span> <span class="text-slate-700">Quản lý &amp; Giám đốc thiếu góc nhìn tổng thể</span>
+        </div>
+        <div class="flex items-start gap-3 p-5 bg-white rounded-xl border border-slate-200 card-hover shadow-sm"><span class="text-red-500 text-xl mt-0.5">✗</span> <span class="text-slate-700">KPI – Doanh thu – Thưởng chưa gắn chặt với hành động hằng ngày</span>
+        </div>
+       </div>
+      </div>
+      <div>
+       <h3 class="text-2xl font-semibold text-slate-700 mb-6 flex items-center gap-2">
+        <svg class="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
+        </svg> Hệ quả</h3>
+       <div class="space-y-5">
+        <div class="p-7 bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl border border-red-200 card-hover shadow-sm">
+         <div class="flex items-center gap-5">
+          <div class="w-20 h-20 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
+           <svg class="w-10 h-10 text-red-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+           </svg>
+          </div>
+          <div>
+           <h4 class="font-semibold text-red-700 text-lg mb-1">Tăng rủi ro mất kênh &amp; mất doanh thu</h4>
+           <p class="text-sm text-slate-600">Không phát hiện sớm hậu quả nghiêm trọng</p>
+          </div>
+         </div>
+        </div>
+        <div class="p-7 bg-gradient-to-br from-orange-50 to-yellow-50 rounded-2xl border border-orange-200 card-hover shadow-sm">
+         <div class="flex items-center gap-5">
+          <div class="w-20 h-20 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0">
+           <svg class="w-10 h-10 text-orange-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+           </svg>
+          </div>
+          <div>
+           <h4 class="font-semibold text-orange-700 text-lg mb-1">Năng suất nhân sự thấp</h4>
+           <p class="text-sm text-slate-600">Thao tác thủ công lặp lại nhiều lần</p>
+          </div>
+         </div>
+        </div>
+        <div class="p-7 bg-gradient-to-br from-yellow-50 to-amber-50 rounded-2xl border border-yellow-200 card-hover shadow-sm">
+         <div class="flex items-center gap-5">
+          <div class="w-20 h-20 bg-yellow-100 rounded-xl flex items-center justify-center flex-shrink-0">
+           <svg class="w-10 h-10 text-yellow-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+           </svg>
+          </div>
+          <div>
+           <h4 class="font-semibold text-yellow-700 text-lg mb-1">Quản lý quá tải khi scale hệ thống</h4>
+           <p class="text-sm text-slate-600">Không có công cụ hỗ trợ scale</p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- SECTION 3 - Vision -->
+   <section id="vision" class="section flex items-center justify-center px-6 py-24 bg-white">
+    <div class="max-w-6xl w-full fade-in">
+     <div class="flex items-center gap-3 mb-3"><span class="text-violet-600 font-semibold text-sm tracking-wider uppercase">Tầm nhìn</span>
+      <div class="h-px flex-1 bg-gradient-to-r from-violet-300 to-transparent"></div>
+     </div>
+     <h2 class="text-4xl md:text-5xl font-bold mb-16 text-slate-800">Dự án <span class="gradient-text">Channel Management Platform</span></h2>
+     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+      <div class="relative">
+       <div class="absolute -inset-4 bg-gradient-to-r from-violet-200/50 via-pink-200/50 to-purple-200/50 rounded-3xl blur-2xl"></div>
+       <div class="relative p-10 bg-gradient-to-br from-violet-50 to-pink-50 rounded-2xl border border-violet-200">
+        <div class="flex items-center gap-4 mb-6">
+         <div class="w-14 h-14 bg-violet-100 rounded-xl flex items-center justify-center">
+          <svg class="w-7 h-7 text-violet-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+          </svg>
+         </div>
+         <h3 class="text-2xl font-bold text-slate-800">Tầm nhìn</h3>
+        </div>
+        <p class="text-xl text-slate-700 leading-relaxed">Xây dựng nền tảng quản lý kênh <span class="text-violet-600 font-semibold">all-in-one</span>, cho phép mở rộng quy mô hệ thống kênh <span class="text-pink-600 font-semibold">không giới hạn</span> với rủi ro vận hành <span class="text-green-600 font-semibold">tiệm cận bằng 0</span>.</p>
+       </div>
+      </div>
+      <div>
+       <h3 class="text-2xl font-semibold text-slate-700 mb-6 flex items-center gap-2">
+        <svg class="w-7 h-7 text-pink-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+        </svg> Định hướng cốt lõi</h3>
+       <div class="space-y-5">
+        <div class="p-7 bg-gradient-to-r from-violet-50 to-purple-50 rounded-xl border border-violet-200 card-hover shadow-sm">
+         <div class="flex items-center gap-5">
+          <div class="w-16 h-16 bg-white rounded-xl flex items-center justify-center text-4xl flex-shrink-0 shadow-sm">
+           🛡️
+          </div>
+          <div>
+           <h4 class="font-semibold text-violet-700 text-lg mb-1">Phòng ngừa rủi ro thay vì chữa cháy</h4>
+           <p class="text-sm text-slate-600">Phát hiện sớm, xử lý kịp thời</p>
+          </div>
+         </div>
+        </div>
+        <div class="p-7 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl border border-blue-200 card-hover shadow-sm">
+         <div class="flex items-center gap-5">
+          <div class="w-16 h-16 bg-white rounded-xl flex items-center justify-center text-4xl flex-shrink-0 shadow-sm">
+           ⚙️
+          </div>
+          <div>
+           <h4 class="font-semibold text-blue-700 text-lg mb-1">Chuẩn hóa &amp; tự động hóa vận hành</h4>
+           <p class="text-sm text-slate-600">Giảm thao tác thủ công, tăng hiệu suất</p>
+          </div>
+         </div>
+        </div>
+        <div class="p-7 bg-gradient-to-r from-pink-50 to-rose-50 rounded-xl border border-pink-200 card-hover shadow-sm">
+         <div class="flex items-center gap-5">
+          <div class="w-16 h-16 bg-white rounded-xl flex items-center justify-center text-4xl flex-shrink-0 shadow-sm">
+           📊
+          </div>
+          <div>
+           <h4 class="font-semibold text-pink-700 text-lg mb-1">Quản trị dựa trên dữ liệu, không cảm tính</h4>
+           <p class="text-sm text-slate-600">Ra quyết định chính xác với data</p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- SECTION 4 - Goals -->
+   <section id="goals" class="section flex items-center justify-center px-6 py-24">
+    <div class="max-w-6xl w-full fade-in">
+     <div class="flex items-center gap-3 mb-3"><span class="text-violet-600 font-semibold text-sm tracking-wider uppercase">Mục tiêu</span>
+      <div class="h-px flex-1 bg-gradient-to-r from-violet-300 to-transparent"></div>
+     </div>
+     <h2 class="text-4xl md:text-5xl font-bold mb-4 text-slate-800">Mục tiêu <span class="gradient-text">Kinh doanh</span></h2>
+     <p class="text-slate-600 mb-12 text-lg">Channel Management Platform được xây dựng để đạt các mục tiêu sau:</p>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="p-8 bg-gradient-to-br from-violet-50 to-purple-50 rounded-2xl border border-violet-200 card-hover shadow-sm">
+       <div class="flex items-start gap-6">
+        <div class="w-24 h-24 bg-violet-100 rounded-2xl flex items-center justify-center flex-shrink-0"><span class="text-2xl font-bold text-violet-600">≥50%</span>
+        </div>
+        <div>
+         <h3 class="text-xl font-semibold text-slate-800 mb-2">Giảm thời gian xử lý</h3>
+         <p class="text-slate-600">Claim, gậy &amp; vấn đề bản quyền được xử lý nhanh hơn</p>
+        </div>
+       </div>
+      </div>
+      <div class="p-8 bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl border border-pink-200 card-hover shadow-sm">
+       <div class="flex items-start gap-6">
+        <div class="w-24 h-24 bg-pink-100 rounded-2xl flex items-center justify-center flex-shrink-0"><span class="text-2xl font-bold text-pink-600">20-30%</span>
+        </div>
+        <div>
+         <h3 class="text-xl font-semibold text-slate-800 mb-2">Tăng năng suất nhân sự</h3>
+         <p class="text-slate-600">Nhờ tính năng quản lý tập trung: đăng bài, seeding, xử lý claim hàng loạt</p>
+        </div>
+       </div>
+      </div>
+      <div class="p-8 bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl border border-orange-200 card-hover shadow-sm">
+       <div class="flex items-start gap-6">
+        <div class="w-24 h-24 bg-orange-100 rounded-2xl flex items-center justify-center flex-shrink-0"><span class="text-2xl font-bold text-orange-600">80%</span>
+        </div>
+        <div>
+         <h3 class="text-xl font-semibold text-slate-800 mb-2">Giảm rủi ro sai sót</h3>
+         <p class="text-slate-600">Quên lịch đăng, sót comment, miss claim - nhờ lập lịch &amp; cảnh báo tự động</p>
+        </div>
+       </div>
+      </div>
+      <div class="p-8 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl border border-cyan-200 card-hover shadow-sm">
+       <div class="flex items-start gap-6">
+        <div class="w-24 h-24 bg-cyan-100 rounded-2xl flex items-center justify-center flex-shrink-0"><span class="text-2xl font-bold text-cyan-600">50%</span>
+        </div>
+        <div>
+         <h3 class="text-xl font-semibold text-slate-800 mb-2">Giảm thời gian rà soát</h3>
+         <p class="text-slate-600">Cho quản lý theo dõi &gt;20 kênh của nhân sự dễ dàng hơn</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- SECTION 5 - Impact Logic -->
+   <section class="section flex items-center justify-center px-6 py-24 bg-white">
+    <div class="max-w-6xl w-full fade-in">
+     <div class="flex items-center gap-3 mb-3"><span class="text-violet-600 font-semibold text-sm tracking-wider uppercase">Phương pháp</span>
+      <div class="h-px flex-1 bg-gradient-to-r from-violet-300 to-transparent"></div>
+     </div>
+     <h2 class="text-4xl md:text-5xl font-bold mb-4 text-slate-800">Logic <span class="gradient-text">Impact Mapping</span></h2>
+     <p class="text-slate-600 mb-16 text-lg">Cách Channel Management Platform tạo ra giá trị</p>
+     <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
+      <div class="px-8 py-6 bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl border border-amber-200 text-center shadow-sm">
+       <div class="w-16 h-16 bg-amber-100 rounded-xl mx-auto mb-3 flex items-center justify-center">
+        <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+        </svg>
+       </div>
+       <h3 class="font-bold text-amber-700 text-lg">TÁC ĐỘNG</h3>
+      </div>
+      <svg class="w-8 h-8 text-slate-400 impact-arrow" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+      </svg>
+      <div class="px-8 py-6 bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl border border-pink-200 text-center shadow-sm">
+       <div class="w-16 h-16 bg-pink-100 rounded-xl mx-auto mb-3 flex items-center justify-center">
+        <svg class="w-8 h-8 text-pink-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+        </svg>
+       </div>
+       <h3 class="font-bold text-pink-700 text-lg">VAI TRÒ</h3>
+      </div>
+      <svg class="w-8 h-8 text-slate-400 impact-arrow" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+      </svg>
+      <div class="px-8 py-6 bg-gradient-to-br from-violet-50 to-purple-50 rounded-2xl border border-violet-200 text-center shadow-sm">
+       <div class="w-16 h-16 bg-violet-100 rounded-xl mx-auto mb-3 flex items-center justify-center">
+        <svg class="w-8 h-8 text-violet-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+        </svg>
+       </div>
+       <h3 class="font-bold text-violet-700 text-lg">TÍNH NĂNG</h3>
+      </div>
+      <svg class="w-8 h-8 text-slate-400 impact-arrow" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+      </svg>
+      <div class="px-8 py-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl border border-green-200 text-center shadow-sm">
+       <div class="w-16 h-16 bg-green-100 rounded-xl mx-auto mb-3 flex items-center justify-center">
+        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+        </svg>
+       </div>
+       <h3 class="font-bold text-green-700 text-lg">KẾT QUẢ</h3>
+      </div>
+     </div>
+     <div class="p-8 bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl border border-amber-200 max-w-4xl mx-auto shadow-sm">
+      <div class="flex items-center gap-4">
+       <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
+        <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+       </div>
+       <p class="text-slate-700 text-lg"><span class="font-semibold text-amber-700">Nguyên tắc:</span> Không phát triển tính năng đơn lẻ – mỗi tính năng đều gắn với vai trò cụ thể và chỉ số kinh doanh rõ ràng.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- SECTION 6 - Quy định & Phòng ngừa (Chi tiết) - UPDATED -->
+   <section id="features" class="section flex items-center justify-center px-6 py-24">
+    <div class="max-w-7xl w-full fade-in">
+     <div class="flex items-center gap-3 mb-3"><span class="text-violet-600 font-semibold text-sm tracking-wider uppercase">Chi tiết tính năng #1</span>
+      <div class="h-px flex-1 bg-gradient-to-r from-violet-300 to-transparent"></div>
+     </div>
+     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-slate-800">Quy định &amp; <span class="gradient-text">Phòng ngừa rủi ro</span></h2>
+     <p class="text-slate-600 mb-12 text-lg">Nhóm tính năng: Quy định &amp; Phòng ngừa rủi ro</p>
+     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+      <div class="space-y-6">
+       <div class="p-8 bg-gradient-to-br from-violet-50 to-purple-50 rounded-2xl border border-violet-200 shadow-sm">
+        <h3 class="text-xl font-bold text-violet-700 mb-6 flex items-center gap-3">
+         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+         </svg> 🔧 Tính năng trong Roadmap</h3>
+        <div class="space-y-4">
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-violet-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Tạo &amp; quản lý bộ quy định chạy kênh</p>
+           <p class="text-sm text-slate-600">Hệ thống quản lý tập trung</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-violet-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Tạo &amp; quản lý loại quy định</p>
+           <p class="text-sm text-slate-600">Phân loại rõ ràng</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-violet-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Ban hành &amp; version hóa quy định</p>
+           <p class="text-sm text-slate-600">Lịch sử thay đổi rõ ràng</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-violet-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Nhân sự bắt buộc xem &amp; xác nhận quy định</p>
+           <p class="text-sm text-slate-600">Đảm bảo hiểu rõ</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-violet-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Phát hiện vi phạm quy định cơ bản</p>
+           <p class="text-sm text-slate-600">Tự động giám sát</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-violet-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Cảnh báo sớm khi kênh có dấu hiệu vi phạm</p>
+           <p class="text-sm text-slate-600">Alert tự động</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-violet-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Theo dõi lịch sử vi phạm theo kênh / nhân sự</p>
+           <p class="text-sm text-slate-600">Báo cáo chi tiết</p>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="p-8 bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl border border-amber-200 shadow-sm">
+        <h3 class="text-xl font-bold text-amber-700 mb-6 flex items-center gap-3">
+         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+         </svg> 👥 Tác động theo vai trò</h3>
+        <div class="space-y-4">
+         <div class="p-5 bg-white rounded-xl border-l-4 border-violet-500 shadow-sm">
+          <h4 class="font-bold text-violet-700 mb-2 flex items-center gap-2"><span class="text-xl">👤</span> SEO (nhân sự phát triển kênh)</h4>
+          <ul class="space-y-2 text-sm text-slate-600">
+           <li class="flex items-start gap-2"><span class="text-violet-500">✓</span> <span>Hiểu rõ được làm gì / không được làm gì</span></li>
+           <li class="flex items-start gap-2"><span class="text-violet-500">✓</span> <span>Giảm rủi ro vi phạm do hiểu sai quy định</span></li>
+           <li class="flex items-start gap-2"><span class="text-violet-500">✓</span> <span>Tự điều chỉnh hành vi trước khi bị gậy/claim</span></li>
+          </ul>
+         </div>
+         <div class="p-5 bg-white rounded-xl border-l-4 border-orange-500 shadow-sm">
+          <h4 class="font-bold text-orange-700 mb-2 flex items-center gap-2"><span class="text-xl">⚙️</span> Vận hành (Ops – đảm bảo kênh đi đúng hướng)</h4>
+          <ul class="space-y-2 text-sm text-slate-600">
+           <li class="flex items-start gap-2"><span class="text-orange-500">✓</span> <span>Không phải nhắc quy định thủ công</span></li>
+           <li class="flex items-start gap-2"><span class="text-orange-500">✓</span> <span>Phát hiện sớm kênh có dấu hiệu rủi ro</span></li>
+           <li class="flex items-start gap-2"><span class="text-orange-500">✓</span> <span>Chủ động can thiệp trước khi thành sự cố lớn</span></li>
+          </ul>
+         </div>
+         <div class="p-5 bg-white rounded-xl border-l-4 border-pink-500 shadow-sm">
+          <h4 class="font-bold text-pink-700 mb-2 flex items-center gap-2"><span class="text-xl">👔</span> Giám đốc Công ty / Quản lý</h4>
+          <ul class="space-y-2 text-sm text-slate-600">
+           <li class="flex items-start gap-2"><span class="text-pink-500">✓</span> <span>Nắm được tình trạng tuân thủ của toàn đội</span></li>
+           <li class="flex items-start gap-2"><span class="text-pink-500">✓</span> <span>Biết team/SEO nào vi phạm nhiều để điều chỉnh</span></li>
+          </ul>
+         </div>
+         <div class="p-5 bg-white rounded-xl border-l-4 border-blue-500 shadow-sm">
+          <h4 class="font-bold text-blue-700 mb-2 flex items-center gap-2"><span class="text-xl">🧠</span> CEO / Tập đoàn</h4>
+          <ul class="space-y-2 text-sm text-slate-600">
+           <li class="flex items-start gap-2"><span class="text-blue-500">✓</span> <span>Giảm rủi ro hệ thống</span></li>
+           <li class="flex items-start gap-2"><span class="text-blue-500">✓</span> <span>Bảo vệ tài sản kênh &amp; doanh thu dài hạn</span></li>
+          </ul>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="p-8 bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl border border-pink-200 shadow-sm">
+       <h3 class="text-xl font-bold text-pink-700 mb-6 flex items-center gap-3">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+        </svg> 📊 Kết quả kinh doanh</h3>
+       <div class="space-y-4">
+        <div class="p-5 bg-white rounded-xl border-l-4 border-violet-500 shadow-sm">
+         <div class="flex items-center gap-3 mb-2"><span class="text-3xl font-black text-violet-600">↓ 70-80%</span>
+         </div>
+         <p class="text-slate-700 font-semibold">Vi phạm lặp lại</p>
+         <p class="text-sm text-slate-600 mt-1">do nhân sự hiểu rõ chuẩn hơn</p>
+        </div>
+        <div class="p-5 bg-white rounded-xl border-l-4 border-violet-500 shadow-sm">
+         <div class="flex items-center gap-3 mb-2"><span class="text-3xl font-black text-violet-600">↓ ≥60%</span>
+         </div>
+         <p class="text-slate-700 font-semibold">Sự cố nghiêm trọng phát sinh</p>
+         <p class="text-sm text-slate-600 mt-1">do phát hiện sớm (alert hoạt động tự động)</p>
+        </div>
+        <div class="p-5 bg-white rounded-xl border-l-4 border-amber-500 shadow-sm">
+         <div class="flex items-center gap-3 mb-2"><span class="text-2xl font-black text-amber-600">↓ CHI PHÍ</span>
+         </div>
+         <p class="text-slate-700 font-semibold">Xử lý hậu quả</p>
+         <p class="text-sm text-slate-600 mt-1">claim, gậy, die kênh</p>
+        </div>
+        <div class="p-5 bg-white rounded-xl border-l-4 border-green-500 shadow-sm">
+         <div class="flex items-center gap-3 mb-2"><span class="text-xl font-black text-green-600">CHUYỂN ĐỔI</span>
+         </div>
+         <p class="text-slate-700 font-semibold">Từ chữa cháy → phòng ngừa</p>
+         <p class="text-sm text-slate-600 mt-1">Chủ động thay vì bị động</p>
+        </div>
+       </div>
+       <div class="mt-8 p-6 bg-gradient-to-r from-violet-100 to-purple-100 rounded-xl border-2 border-violet-300">
+        <div class="flex items-center gap-3 mb-3">
+         <div class="w-10 h-10 bg-violet-500 rounded-lg flex items-center justify-center">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+         </div>
+         <h4 class="text-lg font-bold text-slate-800">💡 Thông điệp chốt</h4>
+        </div>
+        <p class="text-slate-700 leading-relaxed">Không còn <span class="text-red-600 font-semibold">"biết khi quá trễ"</span> mà chuyển sang <span class="text-violet-600 font-semibold">"phòng ngừa trước"</span>. Đây là nguyên lý Vision dẫn giải việc triển khai quy định/alert để giảm rủi ro.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- SECTION 7 - Ticket & Hỗ trợ -->
+   <section class="section flex items-center justify-center px-6 py-24 bg-white">
+    <div class="max-w-7xl w-full fade-in">
+     <div class="flex items-center gap-3 mb-3"><span class="text-violet-600 font-semibold text-sm tracking-wider uppercase">Chi tiết tính năng #2</span>
+      <div class="h-px flex-1 bg-gradient-to-r from-violet-300 to-transparent"></div>
+     </div>
+     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-slate-800">Ticket &amp; <span class="gradient-text">Hỗ trợ nhanh</span></h2>
+     <p class="text-slate-600 mb-12 text-lg">Nhóm tính năng: Ticket &amp; Hỗ trợ nhanh</p>
+     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+      <div class="space-y-6">
+       <div class="p-8 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl border border-blue-200 shadow-sm">
+        <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center gap-3">
+         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path>
+         </svg> 🎫 Tính năng trong Roadmap</h3>
+        <div class="space-y-4">
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Tạo &amp; quản lý ticket (claim, gậy, vi phạm, v.v.)</p>
+           <p class="text-sm text-slate-600">Theo dõi tập trung</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Phân loại ticket theo mức độ nghiêm trọng</p>
+           <p class="text-sm text-slate-600">Ưu tiên xử lý đúng</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Gán ticket cho nhân sự phụ trách</p>
+           <p class="text-sm text-slate-600">Trách nhiệm rõ ràng</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Theo dõi tiến trình xử lý ticket</p>
+           <p class="text-sm text-slate-600">Trạng thái realtime</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">SLA &amp; deadline cho ticket</p>
+           <p class="text-sm text-slate-600">Đảm bảo giải quyết kịp thời</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Dashboard ticket theo team / kênh</p>
+           <p class="text-sm text-slate-600">Tổng quan nhanh</p>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="p-8 bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl border border-amber-200 shadow-sm">
+        <h3 class="text-xl font-bold text-amber-700 mb-6 flex items-center gap-3">
+         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+         </svg> 👥 Tác động theo vai trò</h3>
+        <div class="space-y-4">
+         <div class="p-5 bg-white rounded-xl border-l-4 border-blue-500 shadow-sm">
+          <h4 class="font-bold text-blue-700 mb-2 flex items-center gap-2"><span class="text-xl">👤</span> SEO (nhân sự phát triển kênh)</h4>
+          <ul class="space-y-2 text-sm text-slate-600">
+           <li class="flex items-start gap-2"><span class="text-blue-500">✓</span> <span>Báo vấn đề nhanh không sợ quên</span></li>
+           <li class="flex items-start gap-2"><span class="text-blue-500">✓</span> <span>Được hỗ trợ kịp thời khi gặp rắc rối</span></li>
+          </ul>
+         </div>
+         <div class="p-5 bg-white rounded-xl border-l-4 border-orange-500 shadow-sm">
+          <h4 class="font-bold text-orange-700 mb-2 flex items-center gap-2"><span class="text-xl">⚙️</span> Vận hành (Ops)</h4>
+          <ul class="space-y-2 text-sm text-slate-600">
+           <li class="flex items-start gap-2"><span class="text-orange-500">✓</span> <span>Nhìn toàn bộ ticket một chỗ thay vì lục chat</span></li>
+           <li class="flex items-start gap-2"><span class="text-orange-500">✓</span> <span>Ưu tiên ticket nghiêm trọng trước</span></li>
+           <li class="flex items-start gap-2"><span class="text-orange-500">✓</span> <span>Không bỏ sót ticket nào</span></li>
+          </ul>
+         </div>
+         <div class="p-5 bg-white rounded-xl border-l-4 border-pink-500 shadow-sm">
+          <h4 class="font-bold text-pink-700 mb-2 flex items-center gap-2"><span class="text-xl">👔</span> Giám đốc Công ty / Quản lý</h4>
+          <ul class="space-y-2 text-sm text-slate-600">
+           <li class="flex items-start gap-2"><span class="text-pink-500">✓</span> <span>Biết team nào đang quá tải ticket</span></li>
+           <li class="flex items-start gap-2"><span class="text-pink-500">✓</span> <span>Đánh giá hiệu quả xử lý của từng team</span></li>
+          </ul>
+         </div>
+         <div class="p-5 bg-white rounded-xl border-l-4 border-cyan-500 shadow-sm">
+          <h4 class="font-bold text-cyan-700 mb-2 flex items-center gap-2"><span class="text-xl">🧠</span> CEO / Tập đoàn</h4>
+          <ul class="space-y-2 text-sm text-slate-600">
+           <li class="flex items-start gap-2"><span class="text-cyan-500">✓</span> <span>Đảm bảo vấn đề không bị bỏ sót</span></li>
+           <li class="flex items-start gap-2"><span class="text-cyan-500">✓</span> <span>Giảm rủi ro leo thang thành sự cố lớn</span></li>
+          </ul>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="p-8 bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl border border-pink-200 shadow-sm">
+       <h3 class="text-xl font-bold text-pink-700 mb-6 flex items-center gap-3">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+        </svg> 📊 Kết quả kinh doanh</h3>
+       <div class="space-y-4">
+        <div class="p-5 bg-white rounded-xl border-l-4 border-blue-500 shadow-sm">
+         <div class="flex items-center gap-3 mb-2"><span class="text-3xl font-black text-blue-600">↓ ≥50%</span>
+         </div>
+         <p class="text-slate-700 font-semibold">Thời gian xử lý trung bình</p>
+         <p class="text-sm text-slate-600 mt-1">do ticket được ưu tiên và gán đúng người</p>
+        </div>
+        <div class="p-5 bg-white rounded-xl border-l-4 border-cyan-500 shadow-sm">
+         <div class="flex items-center gap-3 mb-2"><span class="text-3xl font-black text-cyan-600">↓ 80%</span>
+         </div>
+         <p class="text-slate-700 font-semibold">Ticket bị bỏ sót / quên</p>
+         <p class="text-sm text-slate-600 mt-1">nhờ hệ thống theo dõi tự động</p>
+        </div>
+        <div class="p-5 bg-white rounded-xl border-l-4 border-violet-500 shadow-sm">
+         <div class="flex items-center gap-3 mb-2"><span class="text-2xl font-black text-violet-600">↑ MINH BẠCH</span>
+         </div>
+         <p class="text-slate-700 font-semibold">Quản lý dễ dàng giám sát</p>
+         <p class="text-sm text-slate-600 mt-1">ticket nào đang pending, ai chịu trách nhiệm</p>
+        </div>
+       </div>
+       <div class="mt-8 p-6 bg-gradient-to-r from-blue-100 to-cyan-100 rounded-xl border-2 border-blue-300">
+        <div class="flex items-center gap-3 mb-3">
+         <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+         </div>
+         <h4 class="text-lg font-bold text-slate-800">💡 Thông điệp chốt</h4>
+        </div>
+        <p class="text-slate-700 leading-relaxed">Không để <span class="text-red-600 font-semibold">vấn đề chìm nghỉm</span> trong chat. <span class="text-blue-600 font-semibold">Ticket hóa mọi sự cố</span> để xử lý có hệ thống, giúp <span class="text-cyan-600 font-semibold">giảm thời gian phản hồi</span> và <span class="text-violet-600 font-semibold">tăng hiệu suất hỗ trợ</span>.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- SECTION 8 - KPI & Thưởng -->
+   <section class="section flex items-center justify-center px-6 py-24">
+    <div class="max-w-7xl w-full fade-in">
+     <div class="flex items-center gap-3 mb-3"><span class="text-violet-600 font-semibold text-sm tracking-wider uppercase">Chi tiết tính năng #3</span>
+      <div class="h-px flex-1 bg-gradient-to-r from-violet-300 to-transparent"></div>
+     </div>
+     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-slate-800">KPI &amp; <span class="gradient-text">Hiệu suất</span></h2>
+     <p class="text-slate-600 mb-12 text-lg">Nhóm tính năng: KPI &amp; Hiệu suất</p>
+     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+      <div class="space-y-6">
+       <div class="p-8 bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl border border-green-200 shadow-sm">
+        <h3 class="text-xl font-bold text-green-700 mb-6 flex items-center gap-3">
+         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+         </svg> 📈 Tính năng trong Roadmap</h3>
+        <div class="space-y-4">
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Thiết lập KPI theo vai trò &amp; mục tiêu</p>
+           <p class="text-sm text-slate-600">Cá nhân hóa cho từng vị trí</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Theo dõi hiệu suất thực tế vs KPI</p>
+           <p class="text-sm text-slate-600">Realtime tracking</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Bảng xếp hạng nhân sự theo hiệu suất</p>
+           <p class="text-sm text-slate-600">Tạo động lực cạnh tranh</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Tính thưởng tự động dựa trên KPI đạt được</p>
+           <p class="text-sm text-slate-600">Công bằng &amp; minh bạch</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Báo cáo hiệu suất hàng tháng / quý</p>
+           <p class="text-sm text-slate-600">Đánh giá định kỳ</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Cảnh báo khi hiệu suất dưới mức kỳ vọng</p>
+           <p class="text-sm text-slate-600">Can thiệp kịp thời</p>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="p-8 bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl border border-amber-200 shadow-sm">
+        <h3 class="text-xl font-bold text-amber-700 mb-6 flex items-center gap-3">
+         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+         </svg> 👥 Tác động theo vai trò</h3>
+        <div class="space-y-4">
+         <div class="p-5 bg-white rounded-xl border-l-4 border-green-500 shadow-sm">
+          <h4 class="font-bold text-green-700 mb-2 flex items-center gap-2"><span class="text-xl">👤</span> SEO (nhân sự phát triển kênh)</h4>
+          <ul class="space-y-2 text-sm text-slate-600">
+           <li class="flex items-start gap-2"><span class="text-green-500">✓</span> <span>Biết rõ mình cần làm gì để đạt KPI</span></li>
+           <li class="flex items-start gap-2"><span class="text-green-500">✓</span> <span>Tự kiểm tra tiến độ hàng ngày</span></li>
+           <li class="flex items-start gap-2"><span class="text-green-500">✓</span> <span>Được thưởng công bằng khi đạt mục tiêu</span></li>
+          </ul>
+         </div>
+         <div class="p-5 bg-white rounded-xl border-l-4 border-pink-500 shadow-sm">
+          <h4 class="font-bold text-pink-700 mb-2 flex items-center gap-2"><span class="text-xl">👔</span> Giám đốc Công ty / Quản lý</h4>
+          <ul class="space-y-2 text-sm text-slate-600">
+           <li class="flex items-start gap-2"><span class="text-pink-500">✓</span> <span>Đánh giá hiệu suất team khách quan</span></li>
+           <li class="flex items-start gap-2"><span class="text-pink-500">✓</span> <span>Ra quyết định nhân sự dựa trên data</span></li>
+          </ul>
+         </div>
+         <div class="p-5 bg-white rounded-xl border-l-4 border-emerald-500 shadow-sm">
+          <h4 class="font-bold text-emerald-700 mb-2 flex items-center gap-2"><span class="text-xl">🧠</span> CEO / Tập đoàn</h4>
+          <ul class="space-y-2 text-sm text-slate-600">
+           <li class="flex items-start gap-2"><span class="text-emerald-500">✓</span> <span>Biết team nào hiệu suất cao để nhân rộng</span></li>
+           <li class="flex items-start gap-2"><span class="text-emerald-500">✓</span> <span>Đảm bảo nguồn lực được dùng hiệu quả</span></li>
+          </ul>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="p-8 bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl border border-pink-200 shadow-sm">
+       <h3 class="text-xl font-bold text-pink-700 mb-6 flex items-center gap-3">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+        </svg> 📊 Kết quả kinh doanh</h3>
+       <div class="space-y-4">
+        <div class="p-5 bg-white rounded-xl border-l-4 border-green-500 shadow-sm">
+         <div class="flex items-center gap-3 mb-2"><span class="text-3xl font-black text-green-600">↑ 20-30%</span>
+         </div>
+         <p class="text-slate-700 font-semibold">Năng suất làm việc trung bình</p>
+         <p class="text-sm text-slate-600 mt-1">Do mục tiêu rõ ràng và động lực tăng</p>
+        </div>
+        <div class="p-5 bg-white rounded-xl border-l-4 border-emerald-500 shadow-sm">
+         <div class="flex items-center gap-3 mb-2"><span class="text-2xl font-black text-emerald-600">CÔNG BẰNG</span>
+         </div>
+         <p class="text-slate-700 font-semibold">Hệ thống thưởng minh bạch</p>
+         <p class="text-sm text-slate-600 mt-1">Tự động tính toán dựa trên KPI đạt được</p>
+        </div>
+       </div>
+       <div class="mt-8 p-6 bg-gradient-to-r from-green-100 to-emerald-100 rounded-xl border-2 border-green-300">
+        <div class="flex items-center gap-3 mb-3">
+         <div class="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+         </div>
+         <h4 class="text-lg font-bold text-slate-800">💡 Thông điệp chốt</h4>
+        </div>
+        <p class="text-slate-700 leading-relaxed"><span class="text-green-600 font-semibold">KPI rõ ràng + theo dõi liên tục + thưởng công bằng</span> = Tăng động lực làm việc và năng suất. Chuyển từ <span class="text-orange-600 font-semibold">"làm theo cảm giác"</span> sang <span class="text-violet-600 font-semibold">"làm theo mục tiêu đo được"</span>.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- SECTION 9 - AI hỗ trợ SEO -->
+   <section class="section flex items-center justify-center px-6 py-24 bg-white">
+    <div class="max-w-7xl w-full fade-in">
+     <div class="flex items-center gap-3 mb-3"><span class="text-violet-600 font-semibold text-sm tracking-wider uppercase">Chi tiết tính năng #4</span>
+      <div class="h-px flex-1 bg-gradient-to-r from-violet-300 to-transparent"></div>
+     </div>
+     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-slate-800">AI hỗ trợ <span class="gradient-text">SEO &amp; Tối ưu</span></h2>
+     <p class="text-slate-600 mb-12 text-lg">Nhóm tính năng: AI hỗ trợ SEO &amp; Tối ưu</p>
+     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+      <div class="space-y-6">
+       <div class="p-8 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl border border-purple-200 shadow-sm">
+        <h3 class="text-xl font-bold text-purple-700 mb-6 flex items-center gap-3">
+         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+         </svg> 🤖 Tính năng trong Roadmap</h3>
+        <div class="space-y-4">
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Gợi ý title, description, tags tối ưu</p>
+           <p class="text-sm text-slate-600">AI phân tích xu hướng</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Phát hiện nội dung trùng lặp / vi phạm bản quyền</p>
+           <p class="text-sm text-slate-600">Quét tự động</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Đề xuất lịch đăng video tối ưu</p>
+           <p class="text-sm text-slate-600">Dựa trên lịch sử hiệu suất</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Phân tích competitor &amp; đưa ra insight</p>
+           <p class="text-sm text-slate-600">Học từ đối thủ</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Tự động trả lời comment phổ biến</p>
+           <p class="text-sm text-slate-600">Tăng engagement</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Dự đoán hiệu suất video trước khi đăng</p>
+           <p class="text-sm text-slate-600">AI scoring</p>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="p-8 bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl border border-amber-200 shadow-sm">
+        <h3 class="text-xl font-bold text-amber-700 mb-6 flex items-center gap-3">
+         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+         </svg> 👥 Tác động theo vai trò</h3>
+        <div class="space-y-4">
+         <div class="p-5 bg-white rounded-xl border-l-4 border-purple-500 shadow-sm">
+          <h4 class="font-bold text-purple-700 mb-2 flex items-center gap-2"><span class="text-xl">👤</span> SEO (nhân sự phát triển kênh)</h4>
+          <ul class="space-y-2 text-sm text-slate-600">
+           <li class="flex items-start gap-2"><span class="text-purple-500">✓</span> <span>Có gợi ý chuyên nghiệp để tối ưu video</span></li>
+           <li class="flex items-start gap-2"><span class="text-purple-500">✓</span> <span>Giảm thời gian nghĩ title/tag</span></li>
+           <li class="flex items-start gap-2"><span class="text-purple-500">✓</span> <span>Tránh vi phạm bản quyền nhờ AI quét trước</span></li>
+          </ul>
+         </div>
+         <div class="p-5 bg-white rounded-xl border-l-4 border-pink-500 shadow-sm">
+          <h4 class="font-bold text-pink-700 mb-2 flex items-center gap-2"><span class="text-xl">👔</span> Giám đốc Công ty / Quản lý</h4>
+          <ul class="space-y-2 text-sm text-slate-600">
+           <li class="flex items-start gap-2"><span class="text-pink-500">✓</span> <span>Học được insight từ competitor</span></li>
+           <li class="flex items-start gap-2"><span class="text-pink-500">✓</span> <span>Áp dụng best practice vào team</span></li>
+          </ul>
+         </div>
+         <div class="p-5 bg-white rounded-xl border-l-4 border-indigo-500 shadow-sm">
+          <h4 class="font-bold text-indigo-700 mb-2 flex items-center gap-2"><span class="text-xl">🧠</span> CEO / Tập đoàn</h4>
+          <ul class="space-y-2 text-sm text-slate-600">
+           <li class="flex items-start gap-2"><span class="text-indigo-500">✓</span> <span>Nâng cao chất lượng nội dung toàn hệ thống</span></li>
+           <li class="flex items-start gap-2"><span class="text-indigo-500">✓</span> <span>Tăng khả năng cạnh tranh với AI</span></li>
+          </ul>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="p-8 bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl border border-pink-200 shadow-sm">
+       <h3 class="text-xl font-bold text-pink-700 mb-6 flex items-center gap-3">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+        </svg> Kết quả kinh doanh</h3>
+       <div class="space-y-4">
+        <div class="p-5 bg-white rounded-xl border-l-4 border-purple-500 shadow-sm">
+         <div class="flex items-center gap-3 mb-2"><span class="text-3xl font-black text-purple-600">↑ 15-25%</span>
+         </div>
+         <p class="text-slate-700 font-semibold">Hiệu suất video (view, engagement)</p>
+         <p class="text-sm text-slate-600 mt-1">nhờ tối ưu title/tag/lịch đăng</p>
+        </div>
+        <div class="p-5 bg-white rounded-xl border-l-4 border-indigo-500 shadow-sm">
+         <div class="flex items-center gap-3 mb-2"><span class="text-3xl font-black text-indigo-600">↓ 40%</span>
+         </div>
+         <p class="text-slate-700 font-semibold">Thời gian chuẩn bị metadata</p>
+         <p class="text-sm text-slate-600 mt-1">AI gợi ý tự động thay vì nghĩ thủ công</p>
+        </div>
+        <div class="p-5 bg-white rounded-xl border-l-4 border-violet-500 shadow-sm">
+         <div class="flex items-center gap-3 mb-2"><span class="text-3xl font-black text-violet-600">↓ 60%</span>
+         </div>
+         <p class="text-slate-700 font-semibold">Vi phạm bản quyền không lường trước</p>
+         <p class="text-sm text-slate-600 mt-1">AI quét và cảnh báo trước khi đăng</p>
+        </div>
+        <div class="p-5 bg-white rounded-xl border-l-4 border-fuchsia-500 shadow-sm">
+         <div class="flex items-center gap-3 mb-2"><span class="text-xl font-black text-fuchsia-600">NÂNG TẦM</span>
+         </div>
+         <p class="text-slate-700 font-semibold">Chất lượng nội dung</p>
+         <p class="text-sm text-slate-600 mt-1">SEO có công cụ như chuyên gia</p>
+        </div>
+       </div>
+       <div class="mt-8 p-6 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-xl border-2 border-purple-300">
+        <div class="flex items-center gap-3 mb-3">
+         <div class="w-10 h-10 bg-purple-500 rounded-lg flex items-center justify-center">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+         </div>
+         <h4 class="text-lg font-bold text-slate-800">💡 Thông điệp chốt</h4>
+        </div>
+        <p class="text-slate-700 leading-relaxed"><span class="text-purple-600 font-semibold">AI không thay thế SEO</span>, mà giúp SEO làm việc <span class="text-indigo-600 font-semibold">nhanh hơn, thông minh hơn</span>. Chuyển từ <span class="text-orange-600 font-semibold">"làm thủ công"</span> sang <span class="text-violet-600 font-semibold">"làm với AI copilot"</span>.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- SECTION 10 - Dashboard tổng hợp -->
+   <section class="section flex items-center justify-center px-6 py-24">
+    <div class="max-w-7xl w-full fade-in">
+     <div class="flex items-center gap-3 mb-3"><span class="text-violet-600 font-semibold text-sm tracking-wider uppercase">Chi tiết tính năng #5</span>
+      <div class="h-px flex-1 bg-gradient-to-r from-violet-300 to-transparent"></div>
+     </div>
+     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-slate-800">Dashboard <span class="gradient-text">Tổng hợp</span></h2>
+     <p class="text-slate-600 mb-12 text-lg">Nhóm tính năng: Dashboard Tổng hợp</p>
+     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+      <div class="space-y-6">
+       <div class="p-8 bg-gradient-to-br from-cyan-50 to-sky-50 rounded-2xl border border-cyan-200 shadow-sm">
+        <h3 class="text-xl font-bold text-cyan-700 mb-6 flex items-center gap-3">
+         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+         </svg> 📊 Tính năng trong Roadmap</h3>
+        <div class="space-y-4">
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-cyan-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Tổng quan tất cả kênh ở một dashboard</p>
+           <p class="text-sm text-slate-600">Single pane of glass</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-cyan-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Báo cáo doanh thu realtime</p>
+           <p class="text-sm text-slate-600">Cập nhật liên tục</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-cyan-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Phân tích xu hướng theo thời gian</p>
+           <p class="text-sm text-slate-600">Biểu đồ trực quan</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-cyan-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">So sánh hiệu suất giữa các kênh</p>
+           <p class="text-sm text-slate-600">Benchmark nội bộ</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-cyan-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Cảnh báo kênh có vấn đề</p>
+           <p class="text-sm text-slate-600">Alert tự động</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-cyan-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div>
+           <p class="text-slate-800 font-semibold mb-1">Export báo cáo cho cấp quản lý</p>
+           <p class="text-sm text-slate-600">PDF/Excel tự động</p>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="p-8 bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl border border-amber-200 shadow-sm">
+        <h3 class="text-xl font-bold text-amber-700 mb-6 flex items-center gap-3">
+         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+         </svg> 👥 Tác động theo vai trò</h3>
+        <div class="space-y-4">
+         <div class="p-5 bg-white rounded-xl border-l-4 border-cyan-500 shadow-sm">
+          <h4 class="font-bold text-cyan-700 mb-2 flex items-center gap-2"><span class="text-xl">👤</span> SEO (nhân sự phát triển kênh)</h4>
+          <ul class="space-y-2 text-sm text-slate-600">
+           <li class="flex items-start gap-2"><span class="text-cyan-500">✓</span> <span>Xem hiệu suất kênh của mình realtime</span></li>
+           <li class="flex items-start gap-2"><span class="text-cyan-500">✓</span> <span>So sánh với KPI để điều chỉnh</span></li>
+          </ul>
+         </div>
+         <div class="p-5 bg-white rounded-xl border-l-4 border-pink-500 shadow-sm">
+          <h4 class="font-bold text-pink-700 mb-2 flex items-center gap-2"><span class="text-xl">👔</span> Giám đốc Công ty / Quản lý</h4>
+          <ul class="space-y-2 text-sm text-slate-600">
+           <li class="flex items-start gap-2"><span class="text-pink-500">✓</span> <span>Nắm tổng quan toàn bộ hệ thống kênh</span></li>
+           <li class="flex items-start gap-2"><span class="text-pink-500">✓</span> <span>Ra quyết định nhanh dựa trên data tức thời</span></li>
+            <li class="flex items-start gap-2"><span class="text-orange-500">✓</span> <span>Theo dõi 20+ kênh chỉ trong 1 màn hình</span></li>
+           <li class="flex items-start gap-2"><span class="text-orange-500">✓</span> <span>Phát hiện kênh bất thường ngay lập tức</span></li>
+          </ul>
+          </ul>
+         </div>
+         <div class="p-5 bg-white rounded-xl border-l-4 border-sky-500 shadow-sm">
+          <h4 class="font-bold text-sky-700 mb-2 flex items-center gap-2"><span class="text-xl">🧠</span> CEO / Tập đoàn</h4>
+          <ul class="space-y-2 text-sm text-slate-600">
+           <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> <span>Báo cáo tự động cho board meeting</span></li>
+           <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> <span>Đánh giá hiệu quả đầu tư vào kênh</span></li>
+          </ul>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="p-8 bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl border border-pink-200 shadow-sm">
+       <h3 class="text-xl font-bold text-pink-700 mb-6 flex items-center gap-3">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+        </svg> 📊 Kết quả kinh doanh</h3>
+       <div class="space-y-4">
+        <div class="p-5 bg-white rounded-xl border-l-4 border-cyan-500 shadow-sm">
+         <div class="flex items-center gap-3 mb-2"><span class="text-3xl font-black text-cyan-600">↓ ≥50%</span>
+         </div>
+         <p class="text-slate-700 font-semibold">Thời gian rà soát &amp; báo cáo</p>
+         <p class="text-sm text-slate-600 mt-1">từ vài giờ xuống còn vài phút</p>
+        </div>
+        <div class="p-5 bg-white rounded-xl border-l-4 border-sky-500 shadow-sm">
+         <div class="flex items-center gap-3 mb-2"><span class="text-2xl font-black text-sky-600">TĂNG TỐC</span>
+         </div>
+         <p class="text-slate-700 font-semibold">Ra quyết định chiến lược</p>
+         <p class="text-sm text-slate-600 mt-1">Có data realtime không chờ đợi</p>
+        </div>
+        <div class="p-5 bg-white rounded-xl border-l-4 border-violet-500 shadow-sm">
+         <div class="flex items-center gap-3 mb-2"><span class="text-2xl font-black text-violet-600">NHÌN XA HƠN</span>
+         </div>
+         <p class="text-slate-700 font-semibold">Phát hiện xu hướng sớm</p>
+         <p class="text-sm text-slate-600 mt-1">Biểu đồ &amp; phân tích tự động</p>
+        </div>
+        <div class="p-5 bg-white rounded-xl border-l-4 border-pink-500 shadow-sm">
+         <div class="flex items-center gap-3 mb-2"><span class="text-xl font-black text-pink-600">GIẢM SAI SÓT</span>
+         </div>
+         <p class="text-slate-700 font-semibold">Trong báo cáo thủ công</p>
+         <p class="text-sm text-slate-600 mt-1">Tự động tính toán &amp; tổng hợp</p>
+        </div>
+       </div>
+       <div class="mt-8 p-6 bg-gradient-to-r from-cyan-100 to-sky-100 rounded-xl border-2 border-cyan-300">
+        <div class="flex items-center gap-3 mb-3">
+         <div class="w-10 h-10 bg-cyan-500 rounded-lg flex items-center justify-center">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+         </div>
+         <h4 class="text-lg font-bold text-slate-800">💡 Thông điệp chốt</h4>
+        </div>
+        <p class="text-slate-700 leading-relaxed">Quản lý không phải <span class="text-red-600 font-semibold">lục từng kênh</span> để báo cáo. Dashboard <span class="text-cyan-600 font-semibold">tự động tổng hợp</span> giúp <span class="text-sky-600 font-semibold">nhìn toàn cảnh một chỗ</span> và <span class="text-violet-600 font-semibold">ra quyết định nhanh hơn</span>.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- SECTION - Roadmap -->
+   <section id="roadmap" class="section flex items-center justify-center px-6 py-24 bg-gradient-to-br from-violet-50 to-pink-50">
+    <div class="max-w-6xl w-full fade-in">
+     <div class="flex items-center gap-3 mb-3"><span class="text-violet-600 font-semibold text-sm tracking-wider uppercase">Lộ trình</span>
+      <div class="h-px flex-1 bg-gradient-to-r from-violet-300 to-transparent"></div>
+     </div>
+     <h2 class="text-4xl md:text-5xl font-bold mb-4 text-slate-800">Roadmap <span class="gradient-text">Channel Management Platform</span></h2>
+     <p class="text-slate-600 mb-12 text-lg">Lộ trình triển khai theo quý</p>
+     <div class="relative">
+      <div class="absolute top-16 left-0 right-0 h-1 bg-gradient-to-r from-violet-400 via-pink-400 via-purple-400 to-fuchsia-400 rounded-full hidden md:block"></div>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+       <div class="relative pt-8">
+        <div class="absolute top-14 left-1/2 -translate-x-1/2 w-8 h-8 bg-violet-500 rounded-full border-4 border-white z-10 hidden md:block shadow-lg"></div>
+        <div class="mt-12 p-7 bg-white rounded-2xl border border-violet-200 card-hover shadow-md">
+         <div class="text-center mb-4"><span class="inline-block px-5 py-2 bg-violet-100 rounded-full text-violet-700 font-bold text-lg">Q1</span>
+         </div>
+         <h3 class="text-xl font-bold text-violet-700 mb-4 text-center">Nền tảng an toàn</h3>
+         <ul class="space-y-3 text-sm text-slate-600">
+          <li class="flex items-start gap-2"><span class="text-violet-500 mt-0.5">•</span> <span>Chuẩn hóa dữ liệu</span></li>
+          <li class="flex items-start gap-2"><span class="text-violet-500 mt-0.5">•</span> <span>Quy định chạy kênh</span></li>
+          <li class="flex items-start gap-2"><span class="text-violet-500 mt-0.5">•</span> <span>Hệ thống Ticket</span></li>
+         </ul>
+        </div>
+       </div>
+       <div class="relative pt-8">
+        <div class="absolute top-14 left-1/2 -translate-x-1/2 w-8 h-8 bg-pink-500 rounded-full border-4 border-white z-10 hidden md:block shadow-lg"></div>
+        <div class="mt-12 p-7 bg-white rounded-2xl border border-pink-200 card-hover shadow-md">
+         <div class="text-center mb-4"><span class="inline-block px-5 py-2 bg-pink-100 rounded-full text-pink-700 font-bold text-lg">Q2</span>
+         </div>
+         <h3 class="text-xl font-bold text-pink-700 mb-4 text-center">Tăng năng suất</h3>
+         <ul class="space-y-3 text-sm text-slate-600">
+          <li class="flex items-start gap-2"><span class="text-pink-500 mt-0.5">•</span> <span>KPI &amp; Thưởng</span></li>
+          <li class="flex items-start gap-2"><span class="text-pink-500 mt-0.5">•</span> <span>AI hỗ trợ SEO</span></li>
+          <li class="flex items-start gap-2"><span class="text-pink-500 mt-0.5">•</span> <span>Xử lý hàng loạt</span></li>
+         </ul>
+        </div>
+       </div>
+       <div class="relative pt-8">
+        <div class="absolute top-14 left-1/2 -translate-x-1/2 w-8 h-8 bg-purple-500 rounded-full border-4 border-white z-10 hidden md:block shadow-lg"></div>
+        <div class="mt-12 p-7 bg-white rounded-2xl border border-purple-200 card-hover shadow-md">
+         <div class="text-center mb-4"><span class="inline-block px-5 py-2 bg-purple-100 rounded-full text-purple-700 font-bold text-lg">Q3</span>
+         </div>
+         <h3 class="text-xl font-bold text-purple-700 mb-4 text-center">Health Score</h3>
+         <ul class="space-y-3 text-sm text-slate-600">
+          <li class="flex items-start gap-2"><span class="text-purple-500 mt-0.5">•</span> <span>Quản trị rủi ro</span></li>
+          <li class="flex items-start gap-2"><span class="text-purple-500 mt-0.5">•</span> <span>Tác động doanh thu</span></li>
+          <li class="flex items-start gap-2"><span class="text-purple-500 mt-0.5">•</span> <span>Dashboard tổng hợp</span></li>
+         </ul>
+        </div>
+       </div>
+       <div class="relative pt-8">
+        <div class="absolute top-14 left-1/2 -translate-x-1/2 w-8 h-8 bg-fuchsia-500 rounded-full border-4 border-white z-10 hidden md:block shadow-lg"></div>
+        <div class="mt-12 p-7 bg-white rounded-2xl border border-fuchsia-200 card-hover shadow-md">
+         <div class="text-center mb-4"><span class="inline-block px-5 py-2 bg-fuchsia-100 rounded-full text-fuchsia-700 font-bold text-lg">Q4</span>
+         </div>
+         <h3 class="text-xl font-bold text-fuchsia-700 mb-4 text-center">Tối ưu &amp; Scale</h3>
+         <ul class="space-y-3 text-sm text-slate-600">
+          <li class="flex items-start gap-2"><span class="text-fuchsia-500 mt-0.5">•</span> <span>Toàn hệ thống</span></li>
+          <li class="flex items-start gap-2"><span class="text-fuchsia-500 mt-0.5">•</span> <span>Tối ưu hiệu năng</span></li>
+          <li class="flex items-start gap-2"><span class="text-fuchsia-500 mt-0.5">•</span> <span>Mở rộng quy mô</span></li>
+         </ul>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="px-6 py-8 border-t border-slate-200 bg-white">
+    <div class="max-w-6xl mx-auto text-center text-slate-600 text-sm">
+     <p>© 2026 Channel Management Platform - Nền tảng quản lý kênh an toàn &amp; có thể mở rộng</p>
+    </div>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      main_title: 'Channel Management Platform',
+      subtitle: 'NỀN TẢNG QUẢN LÝ KÊNH AN TOÀN & CÓ THỂ MỞ RỘNG'
+    };
+
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    const scrollContainer = document.getElementById('scrollContainer');
+    const progressBar = document.getElementById('progressBar');
+
+    scrollContainer.addEventListener('scroll', () => {
+      const scrollTop = scrollContainer.scrollTop;
+      const scrollHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight;
+      const scrollPercentage = (scrollTop / scrollHeight) * 100;
+      progressBar.style.width = scrollPercentage + '%';
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    async function onConfigChange(config) {
+      const mainTitle = document.getElementById('mainTitle');
+      const navTitle = document.getElementById('navTitle');
+      const mainSubtitle = document.getElementById('mainSubtitle');
+      
+      if (mainTitle) {
+        mainTitle.innerHTML = `<span class="gradient-text">${config.main_title || defaultConfig.main_title}</span>`;
+      }
+      if (navTitle) {
+        navTitle.textContent = config.main_title || defaultConfig.main_title;
+      }
+      if (mainSubtitle) {
+        mainSubtitle.textContent = config.subtitle || defaultConfig.subtitle;
+      }
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['main_title', config.main_title || defaultConfig.main_title],
+        ['subtitle', config.subtitle || defaultConfig.subtitle]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bd95c27c5e98533',t:'MTc2ODM1NDE0MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
